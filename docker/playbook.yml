@@ -1,0 +1,26 @@
+---
+
+#
+# Test Playbook _AND_ Dockerfile playbook
+#
+# We use ghost to test the ark role.
+#
+
+- hosts: localhost
+  sudo: True
+  vars:
+    ark_nodejs_app_version: '0.4.2'
+    ark_nodejs_app_basename: 'ghost'
+    ark_nodejs_app_name: '{{ark_nodejs_app_basename}}-{{ark_nodejs_app_version}}'
+    ark_nodejs_remote_baseurl: 'https://ghost.org/zip'
+    ark_nodejs_archive_file: '{{ark_nodejs_app_name}}.{{ark_nodejs_archive_type}}'
+    ark_nodejs_remote_fullurl: '{{ark_nodejs_remote_baseurl}}/{{ark_nodejs_archive_file}}'
+    ark_nodejs_install_loc: '{{ark_nodejs_install_root}}/{{ark_nodejs_app_basename}}'
+    ark_nodejs_app_file: 'index.js'
+    ark_nodejs_exec: '{{ark_nodejs_install_loc}}/{{ark_nodejs_app_name}}/{{ark_nodejs_app_file}}'
+    ark_nodejs_symlink: '{{ark_nodejs_install_loc}}.js'
+  roles:
+    - role: JasonGiedymin.ark-nodejs
+    - role: ./
+
+# - include: tests/integration-tests.yml

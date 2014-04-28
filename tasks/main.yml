@@ -1,0 +1,14 @@
+---
+- name: Detect Docker
+  shell: /bin/grep -q "docker" /proc/1/cgroup
+  register: docker_installed
+  ignore_errors: True
+
+- name: Docker Message
+  debug: msg="This host is running inside a docker container"
+  when: docker_installed.rc == 0
+
+- name: Create ghost config file
+  template: src=config.js.j2
+    dest="{{ark_nodejs_install_loc}}/{{ark_nodejs_app_name}}/config.js"
+    owner="root" group="root"

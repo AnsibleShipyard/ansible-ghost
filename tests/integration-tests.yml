@@ -1,0 +1,14 @@
+---
+#
+# integration-tests.yml
+#
+
+- hosts: all
+  sudo: True
+  tasks:
+    # Tests
+    - name: Start ghost
+      shell: node {{ark_nodejs_symlink}}
+
+    - name: Check Ghost is running
+      uri: url=http://localhost:2368
