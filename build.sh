@@ -1,12 +1,18 @@
 #!/bin/bash
 
 # Vars
-DOCKERNAME="ansibleshipyard/ghost"
+DOCKERNAME="jasongiedymin/ansible-ghost"
 
 # Build Docker
 time docker build -t $DOCKERNAME .
 
-echo "to use this docker:"
+echo
+echo "This image is a trusted docker.io Image."
+echo
+echo "To pull it"
+echo "    docker pull $DOCKERNAME"
+echo
+echo "To use this docker:"
 echo "    docker run -d -P $DOCKERNAME"
 echo
 echo " then, with the port listed running [docker ps]"

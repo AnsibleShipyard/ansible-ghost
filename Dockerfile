@@ -1,13 +1,16 @@
 #
-# ansibleshipyard/ghost
-#   docker build -t ansibleshipyard/ghost .
+# jasongiedymin/ansible-ghost
+#   docker build -t jasongiedymin/ansible-ghost .
 #
 # Requires:
-# ansibleshipyard/nodejs
-#   https://github.com/AnsibleShipyard/nodejs
+# jasongiedymin/ansible-nodejs
+#   https://github.com/AnsibleShipyard/ansible-nodejs
+#
+# Uses Playbooks:
+#   JasonGiedymin.ark-nodejs
 #
 
-FROM ansibleshipyard/nodejs
+FROM jasongiedymin/ansible-nodejs
 MAINTAINER ansibleshipyard
 
 # Working dir
